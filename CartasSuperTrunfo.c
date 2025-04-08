@@ -1,15 +1,29 @@
 #include <stdio.h>
+#include <string.h>
 
 // Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
+// Nível aventureiro
 
+
+//Função que calcula a densidade populacional
+float densidade_populacional(float area, float populacao){
+    float densidade;
+
+    densidade = populacao / area;
+
+    return densidade;
+}
+
+//Função que calcula o PIB per Capita
+float calcula_PIB(float pib, float populacao){
+    float pib_perCapita = pib / populacao;
+
+    return pib_perCapita;
+}
 
 int main() {
 
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
+    // Declaração das variasveis  
 
     char estado1, estado2;
     char codigo_carta1[10], codigo_carta2[10];
@@ -19,8 +33,6 @@ int main() {
     
    
     // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
    
     printf("Digite o estado da carta 1: ");
     scanf(" %c",&estado1);
@@ -40,7 +52,7 @@ int main() {
     printf("Digite a area em m2 da cidade: ");
     scanf("%f",&area1);
 
-    printf("Informe o PIB da cidade: ");
+    printf("Informe o PIB da cidade (em bilhões de reais: ");
     scanf("%f", &pib1);
 
     printf("Informe a quantidade de pontos turísticos: ");
@@ -74,13 +86,18 @@ int main() {
 
     printf("\n-------------------------------------\n");
 
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    // Calculo de Densidade e PIB
+    float dens_populacional1 = densidade_populacional(area1, (float) populacao1);
+    float pib_perCapita1 = calcula_PIB((pib1*1000000000),(float) populacao1);
+    
+    float dens_populacional2 = densidade_populacional(area2,(float)populacao2);
+    float pib_perCapita2 = calcula_PIB((pib2*1000000000),(float) populacao2);
+    
 
-    printf("Carta 1:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %f\nPIB: %f\nNúmero de pontos Turísticos: %d\n\n",estado1,codigo_carta1,cidade1,populacao1,area1,pib1,pontos_turisticos1 );
-    printf("Carta 2:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %f\nPIB: %f\nNúmero de pontos Turísticos: %d\n\n",estado2,codigo_carta2,cidade2,populacao2,area2,pib2,pontos_turisticos2 );
+    //Saída
 
+    printf("Carta 1:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %f km²\nPIB: %f bilhões de reais\nNúmero de pontos Turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2f reais\n\n",estado1,codigo_carta1,cidade1,populacao1,area1,pib1,pontos_turisticos1,dens_populacional1,pib_perCapita1);
+    printf("Carta 2:\nEstado: %c\nCódigo: %s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %f km²\nPIB: %f bilhões de reais\nNúmero de pontos Turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2f reais\n\n",estado2,codigo_carta2,cidade2,populacao2,area2,pib2,pontos_turisticos2,dens_populacional2,pib_perCapita2);
 
     return 0;
 }
